@@ -17,3 +17,5 @@ Route::get('/dashboard', [UserController::class, 'ticketDashboard'])->name('dash
 Route::post('/register', [UserController::class, 'registerValidate']);
 
 Route::post('/', [UserController::class, 'loginValidate']);
+
+Route::post('/logout', [UserController::class, 'logout'])->name('logout');

@@ -16,8 +16,9 @@
                     Ticket Sales
                 </a>
                 <nav class="mt-2 md:mt-0 md:ml-auto">
-                    <p class="mr-3 py-2 text-gray-800 inline-block">Hi USER!</p>
-                    <form action="" method="post" class="inline">
+                    <p class="mr-3 py-2 text-gray-800 inline-block">Hi {{ session('email') }}!</p>
+                    <form action="{{ route('logout') }}" method="post" class="inline-block">
+                        @csrf
                         <input type="submit" class="btn btn-primary bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded inline-block" value="Log Out" name="logout">
                     </form>
                 </nav>
@@ -31,7 +32,7 @@
 
         <main>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-12 text-center">
-                <div class="bg-white rounded-lg shadow-md p-4">
+                <x-ticket-button>
                     <h4 class="text-lg font-normal">Standard Ticket</h4>
                     <h1 class="text-2xl font-bold">$50</h1>
                     <ul class="mt-3 mb-4">
@@ -43,9 +44,9 @@
                         <input type="hidden" name="product" value="Standard Ticket">
                         <input type="submit" class="w-full bg-green-500 hover:bg-green-700 text-white font-bold py-2 rounded" name="buy" value='Buy'>
                     </form>
-                </div>
+                </x-ticket-button>
 
-                <div class="bg-white rounded-lg shadow-md p-4">
+                <x-ticket-button>
                     <h4 class="text-lg font-normal">Deluxe Ticket</h4>
                     <h1 class="text-2xl font-bold">$125</h1>
                     <ul class="mt-3 mb-4">
@@ -58,9 +59,9 @@
                         <input type="hidden" name="product" value="Deluxe Ticket">
                         <input type="submit" class="w-full bg-green-500 hover:bg-green-700 text-white font-bold py-2 rounded" name="buy" value='Buy'>
                     </form>
-                </div>
+                </x-ticket-button>
 
-                <div class="bg-white rounded-lg shadow-md p-4">
+                <x-ticket-button>
                     <h4 class="text-lg font-normal">V.I.P Ticket</h4>
                     <h1 class="text-2xl font-bold">$225</h1>
                     <ul class="mt-3 mb-4">
@@ -74,7 +75,7 @@
                         <input type="hidden" name="product" value="V.I.P Ticket">
                         <input type="submit" class="w-full bg-green-500 hover:bg-green-700 text-white font-bold py-2 rounded" name="buy" value='Buy'>
                     </form>
-                </div>
+                </x-ticket-button>
             </div>
 
             <footer class="my-5 pt-5 text-gray-600 text-center text-small">
