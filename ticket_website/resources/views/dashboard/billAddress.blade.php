@@ -41,26 +41,28 @@
                                 <input type="text" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2" id="address" name="address" placeholder="1234 Main St" required>
                             </div>
 
-                            <div>
-                                <label for="country" class="block text-sm font-medium">Country</label>
-                                <select class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm" id="country" name="country" required>
-                                    <option>Philippines</option>
-                                    <option>Japan</option>
-                                </select>
-                            </div>
+                            <div class="grid grid-cols-1 md:grid-cols-3 gap-3 col-span-2">
+                                <div>
+                                    <label for="country" class="block text-sm font-medium">Country</label>
+                                    <select class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2" id="country" name="country" required>
+                                        <option>Philippines</option>
+                                        <option>Japan</option>
+                                    </select>
+                                </div>
 
-                            <div>
-                                <label for="state" class="block text-sm font-medium">State</label>
-                                <select class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm" id="state" name="state" required>
-                                    <option>Manila</option>
-                                    <option>Cebu</option>
-                                    <option>Ilocos Norte</option>
-                                </select>
-                            </div>
+                                <div>
+                                    <label for="state" class="block text-sm font-medium">State</label>
+                                    <select class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2" id="state" name="state" required>
+                                        <option>Manila</option>
+                                        <option>Cebu</option>
+                                        <option>Ilocos Norte</option>
+                                    </select>
+                                </div>
 
-                            <div>
-                                <label for="zip" class="block text-sm font-medium">Zip</label>
-                                <input type="text" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2" id="zip" name="zip" required>
+                                <div>
+                                    <label for="zip" class="block text-sm font-medium">Zip</label>
+                                    <input type="text" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2" id="zip" name="zip" required>
+                                </div>
                             </div>
                         </div>
 
@@ -103,8 +105,10 @@
                                 <div>
                                     <h6 class="my-0">Number of Tickets</h6>
                                     <label for="totalTickets" class="block mt-2">Select Tickets</label>
-                                    <select class="form-select mt-1 block w-full" id="totalTickets" name="totalTickets" required>
-                                        <!--  -->
+                                    <select class="form-select mt-1 block w-full p-2" id="totalTickets" name="totalTickets" required>
+                                        @for ($i = 1; $i < 11; $i++)
+                                            <option>{{ $i }}</option>
+                                        @endfor
                                     </select>
                                 </div>
                             </li>
