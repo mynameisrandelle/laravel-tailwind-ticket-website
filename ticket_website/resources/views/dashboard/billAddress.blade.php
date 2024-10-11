@@ -86,7 +86,7 @@
                         <hr class="my-4">
 
                         <div class="mb-3">
-                            <input class="w-full bg-blue-500 text-white font-bold py-2 rounded-lg" type="submit" name="checkout" value="Pay Now">
+                            <input class="w-full bg-blue-500 text-white font-bold py-2 rounded" type="submit" name="checkout" value="Pay Now">
                         </div>
                     </div>
 
@@ -113,11 +113,14 @@
                 </div>
             </form>
 
-            <div class="mb-3">
-                <form action="" method="post">
-                    <input type="submit" class="w-full bg-red-500 text-white font-bold py-2 rounded-lg" name="dashboard" value="Back to Dashboard">
-                </form>
+            <div class="grid grid-cols-3 gap-5">
+                <div class="col-span-2">
+                    <form action="" method="post">
+                        <input type="submit" class="w-full bg-red-500 text-white font-bold py-2 rounded" name="dashboard" value="Back to Dashboard">
+                    </form>
+                </div>
             </div>
+
         </main>
 
         <footer class="my-5 pt-5 text-gray-600 text-center text-sm">
