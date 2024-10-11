@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
 
 class UserController extends Controller
 {
@@ -45,12 +46,25 @@ class UserController extends Controller
 
         // Attempt to log the user in
         if (Auth::attempt(['email' => $request->email, 'password' => $request->password])) {
+            // Store the email input into a session
+            Session::put('email', $request->email);
+
+            // Retrieve the user from the database using the email
+            $user = User::where('email', $request->email)->first();
+            if ($user) {
+                $username = $user->username;
+    
+                // Store the username in the session
+                Session::put('username', $username);
+            }
+
             // Redirect to the dashboard
             return redirect()->route('dashboard');
         } else {
             // Return an error message
             return back()->withErrors(['Invalid email or password']);
         }
+
     }
 
     private function createUser(array $validatedData) {
@@ -59,6 +73,17 @@ class UserController extends Controller
             'email' => $validatedData['email'],
             'password' => $validatedData['password'],
         ]);
+    }
+
+    public function logout() {
+        // Clear all session data
+        Session::flush();
+
+        // Log the user out
+        Auth::logout();
+
+        // Redirect to the homepage or login page
+        return redirect()->route('login');
     }
 
 }
