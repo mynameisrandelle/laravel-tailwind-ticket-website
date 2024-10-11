@@ -16,7 +16,7 @@
                     Ticket Sales
                 </a>
                 <nav class="mt-2 md:mt-0 md:ml-auto">
-                    <p class="mr-3 py-2 text-gray-800 inline-block">Hi {{ session('email') }}!</p>
+                    <p class="mr-3 py-2 text-gray-800 inline-block">Hi {{ session('username') }}!</p>
                     <form action="{{ route('logout') }}" method="post" class="inline-block">
                         @csrf
                         <input type="submit" class="btn btn-primary bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded inline-block" value="Log Out" name="logout">
