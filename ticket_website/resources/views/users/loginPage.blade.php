@@ -1,13 +1,22 @@
 <x-user-layout>
-    <div class="mb-4">
-        <label for="floatingInput" class="text-gray-700 text-sm">Email address</label>
-        <input type="email" class="w-full p-2 pl-10 text-sm text-gray-700" id="floatingInput" placeholder="name@example.com" name="email">
-    </div>
+    <form action="" method="post">
+        @csrf
+        <div class="mb-4">
 
-    <div class="mb-4">
+            <label for="email" class="text-gray-700 text-sm">Email address</label>
+            <input type="email" class="w-full p-2 pl-10 text-sm text-gray-700" id="email" placeholder="name@example.com" name="email" >
 
-        <label for="floatingPassword" class="text-gray-700 text-sm">Password</label>
-        <input type="password" class="w-full p-2 pl-10 text-sm text-gray-700" id="floatingPassword" placeholder="Password" name="password">
+            <x-form-error name="email"/>
+        </div>
 
-    </div>
+        <div class="mb-4">
+
+            <label for="password" class="text-gray-700 text-sm">Password</label>
+            <input type="password" class="w-full p-2 pl-10 text-sm text-gray-700" id="password" placeholder="Password" name="password" >
+
+            <x-form-error name="password"/>
+        </div>
+
+        <input class="bg-blue-500 hover:bg-orange-700 text-white font-bold py-2 px-4 rounded w-full" type="submit" value="Sign In">
+    </form>
 </x-user-layout>

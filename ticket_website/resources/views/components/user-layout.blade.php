@@ -32,7 +32,7 @@
 
             <div class="w-full max-w-md p-4 md:p-6 lg:p-12">
 
-                <form action=""method="post">
+                <form action="" method="post">
 
                     @csrf
 
@@ -42,12 +42,7 @@
                         <h1 class="text-3xl font-bold text-center mb-4">Create Account</h1>
                     @endif
 
-                    
-
                     {{ $slot }}
-
-
-                    <button class="bg-blue-500 hover:bg-orange-700 text-white font-bold py-2 px-4 rounded w-full" type="submit">Sign In</button>
 
                     <p class="text-gray-600 text-sm text-center mt-4">Reservation - 2024</p>
 

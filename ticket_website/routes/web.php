@@ -7,6 +7,13 @@ use App\Http\Controllers\UserController;
 //     return view('users.loginPage');
 // });
 
-Route::get('/', [UserController::class, 'index'])->name('login');
+Route::get('/', [UserController::class, 'loginView'])->name('login');
 
-Route::get('/register', [UserController::class, 'register'])->name('register');
+Route::get('/register', [UserController::class, 'registerView'])->name('register');
+
+Route::get('/dashboard', [UserController::class, 'ticketDashboard'])->name('dashboard');
+
+
+Route::post('/register', [UserController::class, 'registerValidate']);
+
+Route::post('/', [UserController::class, 'loginValidate']);
