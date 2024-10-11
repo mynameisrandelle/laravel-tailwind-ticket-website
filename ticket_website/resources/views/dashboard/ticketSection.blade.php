@@ -39,7 +39,8 @@
                         <li>Upper Box Seat</li>
                         <li>1 Day Ticket</li>
                     </ul>
-                    <form action="" method="post">
+                    <form action="{{ route('priceTicket') }}" method="post">
+                        @csrf
                         <input type="hidden" name="price" value="50">
                         <input type="hidden" name="product" value="Standard Ticket">
                         <input type="submit" class="w-full bg-green-500 hover:bg-green-700 text-white font-bold py-2 rounded" name="buy" value='Buy'>
@@ -54,7 +55,8 @@
                         <li>3 Days Ticket</li>
                         <li>Free Exclusive Merchandise</li>
                     </ul>
-                    <form action="" method="post">
+                    <form action="{{ route('priceTicket') }}" method="post">
+                        @csrf
                         <input type="hidden" name="price" value="125">
                         <input type="hidden" name="product" value="Deluxe Ticket">
                         <input type="submit" class="w-full bg-green-500 hover:bg-green-700 text-white font-bold py-2 rounded" name="buy" value='Buy'>
@@ -70,7 +72,8 @@
                         <li>Free Exclusive Merchandise</li>
                         <li>Backstage Meet and Greet</li>
                     </ul>
-                    <form action="" method="post">
+                    <form action="{{ route('priceTicket') }}" method="post">
+                        @csrf
                         <input type="hidden" name="price" value="225">
                         <input type="hidden" name="product" value="V.I.P Ticket">
                         <input type="submit" class="w-full bg-green-500 hover:bg-green-700 text-white font-bold py-2 rounded" name="buy" value='Buy'>
