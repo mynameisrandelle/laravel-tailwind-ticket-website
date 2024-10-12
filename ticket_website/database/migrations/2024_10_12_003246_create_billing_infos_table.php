@@ -21,8 +21,10 @@ return new class extends Migration
             $table->string('state');
             $table->string('zip');
             $table->string('payment_method');
+            $table->string('product');
+            $table->integer('price');
             $table->integer('total_tickets');
-            $table->decimal('price', 8, 2);
+            $table->integer('total_price');
             $table->timestamps();
         });
     }

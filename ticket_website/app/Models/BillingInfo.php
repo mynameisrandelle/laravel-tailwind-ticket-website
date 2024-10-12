@@ -18,8 +18,10 @@ class BillingInfo extends Model
         'state',
         'zip',
         'payment_method',
-        'total_tickets',
+        'product',
         'price',
+        'total_tickets',
+        'total_price',
     ];
     
 }
