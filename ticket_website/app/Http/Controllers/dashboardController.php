@@ -14,7 +14,11 @@ class DashboardController extends Controller
 
 
     public function priceTicket(Request $request) {
-        dd($request->all());
+        // Store the email input into a session
+        Session::put('billingData', [
+            'price' => $request->price,
+            'product' => $request->product,
+        ]);
 
         return redirect()->route('billAddress');
     }

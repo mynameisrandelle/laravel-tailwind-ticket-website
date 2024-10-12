@@ -33,7 +33,7 @@
 
                             <div class="col-span-2">
                                 <label for="email" class="block text-sm font-medium">Email</label>
-                                <input type="email" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2" id="email" name="email" placeholder="Email" required value="">
+                                <input type="email" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2" id="email" name="email" placeholder="Email" value="{{ session('email') }}" required value="">
                             </div>
 
                             <div class="col-span-2">
@@ -97,15 +97,16 @@
                         <ul class="list-none mb-3">
                             <li class="flex justify-between items-center border-b py-2">
                                 <div>
-                                    <h6 class="my-0 font-medium"></h6>
+                                    <h6 class="my-0 font-medium">{{ session('billingData.product') }}</h6>
                                 </div>
-                                <span class="text-gray-600"></span>
+                                <span class="text-gray-600 font-bold">$ {{ session('billingData.price') }}</span>
                             </li>
-                            <li class="flex justify-between items-center border-b py-2">
+                            <li class="flex justify-between items-start border-b py-2">
+                                <div class="flex flex-col">
+                                    <h6 class="my-0">Number of Tickets: </h6>
+                                </div>
                                 <div>
-                                    <h6 class="my-0">Number of Tickets</h6>
-                                    <label for="totalTickets" class="block mt-2">Select Tickets</label>
-                                    <select class="form-select mt-1 block w-full p-2" id="totalTickets" name="totalTickets" required>
+                                    <select class="form-select w-full p-2 border border-gray-300 rounded-md shadow-sm" id="totalTickets" name="totalTickets" required>
                                         @for ($i = 1; $i < 11; $i++)
                                             <option>{{ $i }}</option>
                                         @endfor

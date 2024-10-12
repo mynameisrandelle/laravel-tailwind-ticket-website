@@ -15,7 +15,7 @@ Route::get('/register', [UserController::class, 'registerView'])->name('register
 
 Route::get('/dashboard', [UserController::class, 'ticketDashboard'])->name('dashboard');
 
-Route::get('/bill_address', [DashboardController::class, 'billAddressView'])->name('billAddress');
+Route::get('/billing_address', [DashboardController::class, 'billAddressView'])->name('billAddress');
 
 
 //$_POST ROUTE
