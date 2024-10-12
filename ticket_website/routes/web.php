@@ -17,6 +17,7 @@ Route::get('/dashboard', [UserController::class, 'ticketDashboard'])->name('dash
 
 Route::get('/billing_address', [DashboardController::class, 'billAddressView'])->name('billAddress');
 
+Route::get('/receipt', [DashboardController::class, 'receiptView'])->name('receipt');
 
 //$_POST ROUTE
 Route::post('/register', [UserController::class, 'registerValidate']);

@@ -11,7 +11,10 @@ class DashboardController extends Controller
     public function billAddressView() {
         return view('dashboard.billAddress');
     }
-
+    
+    public function receiptView() {
+        return view('dashboard.receiptPage');
+    }
 
     public function priceTicket(Request $request) {
         // Store the email input into a session
@@ -42,7 +45,7 @@ class DashboardController extends Controller
         // Call the method to create billing info
         $this->createBillingInfo($validatedData);
 
-        return dd($validatedData);
+        return redirect()->route('receipt');
     }
 
     protected function createBillingInfo(array $data) {
