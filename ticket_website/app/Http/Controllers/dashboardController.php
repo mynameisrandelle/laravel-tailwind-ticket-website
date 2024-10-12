@@ -13,6 +13,32 @@ class DashboardController extends Controller
     }
     
     public function receiptView() {
+        $billingData = Session::get('billingData');
+    
+        // Check if created_at exists in the session data
+        if (isset($billingData['created_at'])) {
+            // Retrieve the billing info using created_at
+            $billingInfo = BillingInfo::where('created_at', $billingData['created_at'])->first();
+    
+            if ($billingInfo) {
+                Session::put('billingInfo', [
+                    'first_name' => $billingInfo->first_name,
+                    'last_name' => $billingInfo->last_name,
+                    'email' => $billingInfo->email,
+                    'address' => $billingInfo->address,
+                    'country' => $billingInfo->country,
+                    'state' => $billingInfo->state,
+                    'zip' => $billingInfo->zip,
+                    'payment_method' => $billingInfo->payment_method,
+                    'product' => $billingInfo->product,
+                    'price' => $billingInfo->price,
+                    'total_tickets' => $billingInfo->total_tickets,
+                    'total_price' => $billingInfo->total_price,
+                    'created_at' => $billingInfo->created_at,
+                ]);
+            } // <- Added closing brace here
+        } // <- Ensure this closing brace is also present
+    
         return view('dashboard.receiptPage');
     }
 
@@ -38,9 +64,16 @@ class DashboardController extends Controller
             'paymentMethod' => 'required|string|max:50',
             'totalTickets' => 'required|integer|min:1',
         ]);
+        
+        // Check if billing data exists
+        $pricePerTicket = Session::get('billingData');
+        if (!$pricePerTicket) {
+            return redirect()->route('billAddress')->withErrors('Billing data not found in session.');
+        }
 
-        $pricePerTicket = Session::get('billingData.price');
-        $validatedData['price'] = $pricePerTicket * $validatedData['totalTickets'];
+        $validatedData['totalPrice'] = $pricePerTicket['price'] * $validatedData['totalTickets'];
+        $validatedData['price'] = $pricePerTicket['price'];
+        $validatedData['product'] = $pricePerTicket['product'];
 
         // Call the method to create billing info
         $this->createBillingInfo($validatedData);
@@ -50,7 +83,7 @@ class DashboardController extends Controller
 
     protected function createBillingInfo(array $data) {
 
-        return BillingInfo::create([
+        $billingInfo = BillingInfo::create([
             'first_name' => $data['firstName'],
             'last_name' => $data['lastName'],
             'email' => $data['email'],
@@ -60,8 +93,16 @@ class DashboardController extends Controller
             'zip' => $data['zip'],
             'payment_method' => $data['paymentMethod'],
             'total_tickets' => $data['totalTickets'],
+            'product' => $data['product'],
             'price' => $data['price'],
+            'total_price' => $data['totalPrice'],
+
         ]);
+    
+        // Store the created_at timestamp in the session
+        Session::put('billingData.created_at', $billingInfo->created_at);
+    
+        return $billingInfo;
     }
 
 }
