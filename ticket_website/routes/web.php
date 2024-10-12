@@ -26,3 +26,5 @@ Route::post('/', [UserController::class, 'loginValidate']);
 Route::post('/logout', [UserController::class, 'logout'])->name('logout');
 
 Route::post('/priceTicket', [DashboardController::class, 'priceTicket'])->name('priceTicket');
+
+Route::post('/checkout', [DashboardController::class, 'storeBillingInfo'])->name('storeBilling');

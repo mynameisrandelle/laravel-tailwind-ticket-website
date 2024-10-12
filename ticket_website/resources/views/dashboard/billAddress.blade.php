@@ -16,7 +16,7 @@
                 <h2 class="text-2xl font-bold">Checkout Form</h2>
             </div>
 
-            <form action="" method="post">
+            <form action="{{ route('storeBilling')}}" method="post">
                 @csrf
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
                     <div class="md:col-span-2">
@@ -24,36 +24,40 @@
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
                             <div>
                                 <label for="firstName" class="block text-sm font-medium">First Name</label>
-                                <input type="text" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2" id="firstName" name="firstName" required>
+                                <input type="text" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2" id="firstName" name="firstName">
+                                <x-form-error name="firstName"/>
                             </div>
 
                             <div>
                                 <label for="lastName" class="block text-sm font-medium">Last Name</label>
-                                <input type="text" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2" id="lastName" name="lastName" required>
+                                <input type="text" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2" id="lastName" name="lastName">
+                                <x-form-error name="lastName"/>
                             </div>
-
+                            
                             <div class="col-span-2">
                                 <label for="email" class="block text-sm font-medium">Email</label>
-                                <input type="email" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2" id="email" name="email" placeholder="Email" value="{{ session('email') }}" required value="">
+                                <input type="email" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2" id="email" name="email" placeholder="example@email.com" value="{{ session('email') }}">
+                                <x-form-error name="email"/>
                             </div>
-
+                            
                             <div class="col-span-2">
                                 <label for="address" class="block text-sm font-medium">Address</label>
-                                <input type="text" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2" id="address" name="address" placeholder="1234 Main St" required>
+                                <input type="text" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2" id="address" name="address" placeholder="1234 Main St">
+                                <x-form-error name="address"/>
                             </div>
-
+                            
                             <div class="grid grid-cols-1 md:grid-cols-3 gap-3 col-span-2">
                                 <div>
                                     <label for="country" class="block text-sm font-medium">Country</label>
-                                    <select class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2" id="country" name="country" required>
+                                    <select class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2" id="country" name="country">
                                         <option>Philippines</option>
                                         <option>Japan</option>
                                     </select>
                                 </div>
-
+                                
                                 <div>
                                     <label for="state" class="block text-sm font-medium">State</label>
-                                    <select class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2" id="state" name="state" required>
+                                    <select class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2" id="state" name="state">
                                         <option>Manila</option>
                                         <option>Cebu</option>
                                         <option>Ilocos Norte</option>
@@ -62,7 +66,8 @@
 
                                 <div>
                                     <label for="zip" class="block text-sm font-medium">Zip</label>
-                                    <input type="text" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2" id="zip" name="zip" required>
+                                    <input type="text" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2" id="zip" name="zip">
+                                    <x-form-error name="zip"/>
                                 </div>
                             </div>
                         </div>
