@@ -17,6 +17,7 @@
             </div>
 
             <form action="" method="post">
+                @csrf
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
                     <div class="md:col-span-2">
                         <h4 class="text-lg font-semibold mb-3">Billing Address</h4>
@@ -88,7 +89,7 @@
                         <hr class="my-4">
 
                         <div class="mb-3">
-                            <input class="w-full bg-blue-500 text-white font-bold py-2 rounded" type="submit" name="checkout" value="Pay Now">
+                            <input class="w-full bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 rounded" type="submit" name="checkout" value="Pay Now">
                         </div>
                     </div>
 
@@ -120,8 +121,9 @@
 
             <div class="grid grid-cols-3 gap-5">
                 <div class="col-span-2">
-                    <form action="" method="post">
-                        <input type="submit" class="w-full bg-red-500 text-white font-bold py-2 rounded" name="dashboard" value="Back to Dashboard">
+                    <form action="{{ route('dashboard') }}" method="get">
+                        @csrf
+                        <input type="submit" class="w-full bg-red-500 hover:bg-red-700 text-white font-bold py-2 rounded" name="dashboard" value="Back to Dashboard">
                     </form>
                 </div>
             </div>
